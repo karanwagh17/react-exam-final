@@ -3,14 +3,14 @@ export const ADD_POST = "ADD_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const DELETE_POST = "DELETE_POST";
 
-// Fetch all posts
+
 export const fetchPosts = () => async (dispatch) => {
   const response = await fetch("http://localhost:3001/posts");
   const posts = await response.json();
   dispatch({ type: FETCH_POSTS, payload: posts });
 };
 
-// Add a new post
+
 export const addPost = (post) => async (dispatch) => {
   const response = await fetch("http://localhost:3001/posts", {
     method: "POST",
@@ -21,7 +21,7 @@ export const addPost = (post) => async (dispatch) => {
   dispatch({ type: ADD_POST, payload: newPost });
 };
 
-// Update an existing post
+
 export const updatePost = (id, post) => async (dispatch) => {
   const response = await fetch(`http://localhost:3001/posts/${id}`, {
     method: "PUT",
