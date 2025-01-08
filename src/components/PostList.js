@@ -16,7 +16,7 @@ const PostList = () => {
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
+    if (window.confirm("Are you sure")) {
       dispatch(deletePost(id));
     }
   };
