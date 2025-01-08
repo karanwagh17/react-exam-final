@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPost, updatePost } from "../store/actions";
+
 import { useNavigate, useParams } from "react-router-dom";
 
+import { addPost, updatePost } from "../store/actions";
+
 const PostForm = () => {
-  const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  
   const [image, setImage] = useState("");
+  
+  const [title, setTitle] = useState("");
+  
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams(); // Get the post id from the URL
+  const { id } = useParams();
 
-  // Get the post from the Redux store if we are editing
+  
   const post = useSelector((state) =>
     state.posts.find((post) => post.id === parseInt(id))
   );
@@ -36,14 +41,14 @@ const PostForm = () => {
       };
 
       if (post) {
-        // Dispatch updatePost for existing post
+
         dispatch(updatePost(post.id, updatedPost));
       } else {
-        // Dispatch addPost for new post
+       
         dispatch(addPost(updatedPost));
       }
 
-      navigate("/"); // Redirect to home after submission
+      navigate("/");
     }
   };
 
